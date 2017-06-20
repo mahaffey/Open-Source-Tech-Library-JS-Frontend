@@ -1,0 +1,22 @@
+{
+  "name": "open-source-tech-library-js-frontend",
+  "version": "1.0.0",
+  "description": "Frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahaffey/Open-Source-Tech-Library-JS-Frontend.git"
+  },
+  "author": "Ryan Mahaffey, Andrew Oldham, Andrew Zheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahaffey/Open-Source-Tech-Library-JS-Frontend/issues"
+  },
+  "homepage": "https://github.com/mahaffey/Open-Source-Tech-Library-JS-Frontend#readme",
+  "dependencies": {
+    "semantic-ui": "^2.2.10"
+  }
+}
