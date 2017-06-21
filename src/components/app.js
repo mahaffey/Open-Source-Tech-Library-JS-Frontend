@@ -8,6 +8,10 @@ class App {
     this.multiBtn.addEventListener('click', this.switchClick.bind(this))
   }
 
+  addModalListeners () {
+
+  }
+
   switchClick () {
     var el = event.target.id
     switch (el) {
@@ -38,15 +42,14 @@ class App {
   }
 
   listClick () {
-    var el = event.target.parentNode.parentNode.id.split('-')
-    switch (el[0]) {
-      case 'topics':
-        break
-      case 'subtopics':
-        break
-      case 'contents':
-        break
+    var el = event.target
+    while(el.className !== 'ui card') {
+      el = el.parentNode
     }
+
+    let id = el.id.split('-')[1]
+    console.log(id)
+    $(`#subtopic-modal-${id}`).modal('show')
   }
 
   renderSubtopics () {
