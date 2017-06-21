@@ -10,23 +10,11 @@ class Topic {
 
   render () {
     return (`
-      <div class="ui card" id="topic-${this.id}">
+      <div class="ui card" id="topics-${this.id}">
         <div class="image">
-          <img src="${this.pic_url}">
         </div>
         <div class="content">
-          <a class="header">${this.name}</a>
-          <div class="meta">
-            <span class="date">${this.subtopics[0].name}</span>
-          </div>
-          <div class="description">
-
-          </div>
-        </div>
-        <div class="extra content">
-          <a>
-            <i class="user icon"></i>
-          </a>
+          <a class="center aligned header">${this.name}</a>
         </div>
       </div>
     `)
@@ -43,7 +31,51 @@ class TopicList {
   }
 
   renderTopics () {
-    document.getElementById('ui-1').innerHTML = this.list.map(topic => topic.render()).join('')
+    return this.list.map(topic => topic.render()).join('')
+  }
+
+  render () {
+    return this.renderTopics()
   }
 
 }
+
+class App {
+  constructor() {
+    this.topic = new TopicList()
+    this.subtopic =
+    this.topicAdapter = new TopicAdapter()
+    this.listContainer = document.getElementById('list')
+    this.listContainer.addEventListener('click', this.listClick.bind(this))
+  }
+
+  listClick () {
+    var el = event.target.parentNode.parentNode.id.split('-')
+    switch (el[0]) {
+      case 'topics':
+        break
+      case 'subtopics':
+        break
+      case 'contents':
+        break
+    }
+  }
+
+  render () {
+    this.listContainer.innerHTML = this.topic.render()
+  }
+}
+
+class TopicAdapter {
+  constructor() {
+    this.baseURL = 'http://localhost:3000/api/v1'
+  }
+
+  
+}
+
+var newApp = new App()
+fetch('http://192.168.6.153:3000/api/v1/topics')
+.then(resp => resp.json())
+.then(data => newApp.topic.createTopics(data))
+newApp.render()
