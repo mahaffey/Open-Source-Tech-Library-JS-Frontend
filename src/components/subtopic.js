@@ -57,9 +57,9 @@ class Subtopic {
 // }
 
 // // var testcd
-// var subtopicList = new SubtopicList()
-//
-fetch('http://localhost:3000/api/v1/subtopics').then( resp => resp.json() ).then(data => subtopicList.createSubtopics(data))
-//
+// // var subtopicList = new SubtopicList()
+// //
+// fetch('http://localhost:3000/api/v1/subtopics').then( resp => resp.json() ).then(data => subtopicList.createSubtopics(data))
+// //
 // // subtopicList.createSubtopics(test)
 // subtopicList.renderSubtopics()
