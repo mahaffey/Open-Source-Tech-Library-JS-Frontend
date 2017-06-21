@@ -11,9 +11,9 @@ class Topic {
   render () {
     return (`
       <div class="ui card" id="topics-${this.id}">
-        <div class="image">
-        </div>
         <div class="content">
+          <img src="#" style="width:75px;height:75px;"alt="${this.name} Picture" >
+
           <a class="center aligned header">${this.name}</a>
         </div>
       </div>
@@ -21,13 +21,16 @@ class Topic {
   }
 }
 
-class TopicList {
-  constructor() {
+class Topics {
+  constructor () {
+    this.topicAdapter = new TopicAdapter()
     this.list = []
   }
 
-  createTopics (topics) {
-    this.list =  topics.map(topic => new Topic(topic))
+  getTopics () {
+    return (this.topicAdapter.getIndex().then(
+      data => this.list = data.map(function(topic) {return new Topic(topic)})
+    ))
   }
 
   renderTopics () {
@@ -42,11 +45,41 @@ class TopicList {
 
 class App {
   constructor() {
-    this.topic = new TopicList()
-    this.subtopic =
-    this.topicAdapter = new TopicAdapter()
+    this.topics = new Topics()
+
+    // this.subtopics = new Subtopics()
     this.listContainer = document.getElementById('list')
     this.listContainer.addEventListener('click', this.listClick.bind(this))
+    this.multiBtn = document.querySelector('.ui.pointing.menu.inverted')
+    this.multiBtn.addEventListener('click', this.switchClick.bind(this))
+  }
+
+  switchClick () {
+    var el = event.target.id
+    switch (el) {
+      case 'home-index':
+        this.refreshHome()
+        break
+      case 'topic-index':
+        this.topicClick()
+        break
+      case 'home-btn':
+        this.subtopicClick()
+        break
+    }
+  }
+
+  refreshHome () {
+    this.listContainer.innerHTML = '<img src="http://i.imgur.com/P9IVqkS.jpg">'
+  }
+
+  topicClick () {
+    this.topics.getTopics()
+    .then(() => this.render())
+  }
+
+  subtopicClick () {
+    
   }
 
   listClick () {
@@ -62,20 +95,23 @@ class App {
   }
 
   render () {
-    this.listContainer.innerHTML = this.topic.render()
+    this.listContainer.innerHTML = this.topics.render()
   }
 }
 
 class TopicAdapter {
   constructor() {
-    this.baseURL = 'http://localhost:3000/api/v1'
+    this.baseURL = 'http://localhost:3000/api/v1/topics'
   }
 
-  
+  getIndex(){
+    return fetch(this.baseURL)
+    .then(resp => resp.json())
+  }
 }
 
-var newApp = new App()
-fetch('http://192.168.6.153:3000/api/v1/topics')
-.then(resp => resp.json())
-.then(data => newApp.topic.createTopics(data))
-newApp.render()
+
+$(document).ready(function() {
+  const newApp = new App()
+  newApp.refreshHome()
+})
