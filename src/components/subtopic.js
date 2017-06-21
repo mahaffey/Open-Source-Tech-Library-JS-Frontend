@@ -40,26 +40,3 @@ class Subtopic {
     `)
   }
 }
-
-// class SubtopicList {
-//   constructor() {
-//     this.list = []
-//   }
-//
-//   createSubtopics (subtopics) {
-//     this.list =  subtopics.map(subtopic => new Subtopic(subtopic))
-//   }
-//
-//   renderSubtopics () {
-//     document.getElementById('ui-1').innerHTML = this.list.map(subtopic => subtopic.render()).join('')
-//   }
-//
-// }
-
-// // var testcd
-// // var subtopicList = new SubtopicList()
-// //
-// fetch('http://localhost:3000/api/v1/subtopics').then( resp => resp.json() ).then(data => subtopicList.createSubtopics(data))
-// //
-// // subtopicList.createSubtopics(test)
-// subtopicList.renderSubtopics()
