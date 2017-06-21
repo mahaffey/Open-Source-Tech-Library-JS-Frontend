@@ -20,7 +20,7 @@ class Topic {
             <span class="date">${this.subtopics[0].name}</span>
           </div>
           <div class="description">
-
+            <p>test</p>
           </div>
         </div>
         <div class="extra content">
