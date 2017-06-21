@@ -1,8 +1,7 @@
 class App {
   constructor() {
     this.topics = new Topics()
-
-    // this.subtopics = new Subtopics()
+    this.subtopics = new Subtopics()
     this.listContainer = document.getElementById('list')
     this.listContainer.addEventListener('click', this.listClick.bind(this))
     this.multiBtn = document.querySelector('.ui.pointing.menu.inverted')
@@ -18,7 +17,7 @@ class App {
       case 'topic-index':
         this.topicClick()
         break
-      case 'home-btn':
+      case 'subtopic-index':
         this.subtopicClick()
         break
     }
@@ -30,11 +29,12 @@ class App {
 
   topicClick () {
     this.topics.getTopics()
-    .then(() => this.render())
+    .then(() => this.renderTopics())
   }
 
   subtopicClick () {
-
+    this.subtopics.getSubtopics()
+    .then(() => this.renderSubtopics())
   }
 
   listClick () {
@@ -49,7 +49,11 @@ class App {
     }
   }
 
-  render () {
+  renderSubtopics () {
+    this.listContainer.innerHTML = this.subtopics.render()
+  }
+
+  renderTopics () {
     this.listContainer.innerHTML = this.topics.render()
   }
 }
