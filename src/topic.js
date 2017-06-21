@@ -12,9 +12,24 @@ class Topic {
     return (`
       <div class="ui card" id="topics-${this.id}">
         <div class="content">
+<<<<<<< HEAD
           <img src="#" style="width:75px;height:75px;"alt="${this.name} Picture" >
 
           <a class="center aligned header">${this.name}</a>
+=======
+          <a class="header">${this.name}</a>
+          <div class="meta">
+            <span class="date">${this.subtopics[0].name}</span>
+          </div>
+          <div class="description">
+            <p>test</p>
+          </div>
+        </div>
+        <div class="extra content">
+          <a>
+            <i class="user icon"></i>
+          </a>
+>>>>>>> subtopics
         </div>
       </div>
     `)
