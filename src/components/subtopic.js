@@ -21,7 +21,7 @@ class Subtopic {
     return (`
       <div class="ui card" id="subtopics-${this.id}">
         <div class="image right aligned">
-          <a href="#">${this.topic.name} &nbsp </a>
+          <a class="remove-this-header" "href="#">${this.topic.name} &nbsp</a>
         </div>
         <div class="content ">
         <div class="meta">

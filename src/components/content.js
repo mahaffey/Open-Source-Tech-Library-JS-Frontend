@@ -3,7 +3,7 @@ class Content {
   constructor (json_data) {
     this.id = json_data.id
     this.title = json_data.title
-    this.pic_url = json_data.pic_url
+    this.pic_url = json_data.pic_url || "http://i.imgur.com/b0DGRSl.png"
     this.link_url = json_data.link_url
     this.description = json_data.description
     this.difficulty = json_data.difficulty
