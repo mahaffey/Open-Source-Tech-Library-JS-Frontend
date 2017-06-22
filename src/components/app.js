@@ -47,14 +47,17 @@ class App {
     while(el.className !== 'ui card') {
       el = el.parentNode
     }
-    let type = el.id.split('-')[0]
-    let id = el.id.split('-')[1]
-    switch (type) {
-      case 'topic':
-        this.renderShowTopic(id)
+    // let type = el.id.split('-')[0]
+    let id = el.id.split('-')
+    id.push(el.getElementsByClassName('header')[0].text)
+    switch (id[0]) {
+      case 'topics':
+        this.topics.getShow(id)
+        .then(() => this.renderShowTopic(id))
         break
     }
-    this.modalContainer.modal('show')
+    $('#modal-list').modal('show')
+
   }
 
   renderSubtopics () {
@@ -67,5 +70,6 @@ class App {
 
   renderShowTopic (id) {
     this.modalContainer.innerHTML = this.topics.renderShow(id)
+    console.log(3, this.modalContainer.innerHTML)
   }
 }

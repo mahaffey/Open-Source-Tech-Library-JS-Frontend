@@ -1,10 +1,15 @@
 class TopicAdapter {
-  constructor() {
+  constructor () {
     this.baseURL = 'http://localhost:3000/api/v1/topics'
   }
 
-  getIndex(){
+  getIndex () {
     return fetch(this.baseURL)
+    .then(resp => resp.json())
+  }
+
+  getShow (id) {
+    return fetch(this.baseURL + `/${id}/subtopics`, {synchronous: true})
     .then(resp => resp.json())
   }
 }

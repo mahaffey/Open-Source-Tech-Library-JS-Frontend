@@ -23,7 +23,7 @@ class Subtopic {
         <div class="image right aligned">
           <a href="#">${this.topic.name} &nbsp </a>
         </div>
-        <div class="content ">
+        <div class="content">
         <div class="meta">
           <img src="${this.pic_url}" style="width:75px;height:75px;"alt="${this.name} Picture" >
           <span>
@@ -39,4 +39,5 @@ class Subtopic {
       </div>
     `)
   }
+
 }
