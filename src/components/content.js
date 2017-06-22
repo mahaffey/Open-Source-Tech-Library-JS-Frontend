@@ -14,7 +14,7 @@ class Content {
 
   renderCard () {
     return (`
-      <div class="ui raised link card" id="content-card-${this.id}">
+      <div class="ui raised link card" id="contents-${this.id}">
         <div class="content">
           <div class="header">${this.title}</div>
           <div class="meta">
@@ -38,30 +38,28 @@ class Content {
 
   renderModal() {
     return (`
-      <div class="ui modal" id="content-modal-${this.id}">
-        <i class="close icon"></i>
-        <div class="header">
-          Profile Picture
+      <div class="ui center aligned container">
+      <div class="header">
+        Profile Picture
+      </div>
+      <div class="image content">
+        <div class="ui medium image">
+          <img src="${this.pic_url}">
         </div>
-        <div class="image content">
-          <div class="ui medium image">
-            <img src="/images/avatar/large/chris.jpg">
-          </div>
-          <div class="description">
-            <div class="ui header">We've auto-chosen a profile image for you.</div>
-            <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-            <p>Is it okay to use this photo?</p>
-          </div>
+        <div class="description">
+          <div class="ui header">Learning Material</div>
+          <p>${this.description}</p>
         </div>
-        <div class="actions">
-          <div class="ui black deny button">
-            Nope
-          </div>
-          <div class="ui positive right labeled icon button">
-            Yep, that's me
-            <i class="checkmark icon"></i>
-          </div>
+      </div>
+      <div class="actions">
+        <div class="ui black deny button">
+          Nope
         </div>
+        <div class="ui positive right labeled icon button">
+          Yep, that's me
+          <i class="checkmark icon"></i>
+        </div>
+      </div>
       </div>
       `)
   }
