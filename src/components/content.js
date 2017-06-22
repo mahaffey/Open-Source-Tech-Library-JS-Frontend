@@ -11,11 +11,14 @@ class Content {
     this.subtopic = data.subtopic
     this.created_at = data.created_at
     this.updated_at = data.updated_at
+    console.log(this)
+    debugger
   }
 
   render () {
-    if (this.descript.length() > 50) {
-      while (this.descript.length() > 50){
+
+    if (this.descript.length > 50) {
+      while (this.descript.length > 50){
         this.descript = this.descript.split(' ').slice(0,-1).join(' ')
       }
       this.descript += "..."
