@@ -25,8 +25,7 @@ class Topics {
   }
 
   renderShowTopics() {
-    console.log(2, this.list)
-    return this.list.map(subtopic => subtopic.render()).join('')
+    return this.list.map(subtopic => subtopic.render(true)).join('')
   }
 
   render () {

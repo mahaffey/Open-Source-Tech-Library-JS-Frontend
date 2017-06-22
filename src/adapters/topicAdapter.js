@@ -9,7 +9,7 @@ class TopicAdapter {
   }
 
   getShow (id) {
-    return fetch(this.baseURL + `/${id}/subtopics`, {synchronous: true})
+    return fetch(this.baseURL + `/${id}/subtopics`)
     .then(resp => resp.json())
   }
 }

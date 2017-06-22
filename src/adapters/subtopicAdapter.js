@@ -8,6 +8,11 @@ class SubtopicAdapter {
     .then(resp => resp.json())
   }
 
+  getShow (id) {
+    return fetch(this.baseURL + `/${id}/contents`)
+    .then(resp => resp.json())
+  }
+
   // getSubtopics() {
   //   return fetch(this.baseUrl)
   //   .then( resp => resp.json() )

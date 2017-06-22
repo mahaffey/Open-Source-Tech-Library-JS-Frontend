@@ -2,18 +2,18 @@ class App {
   constructor() {
     this.topics = new Topics()
     this.subtopics = new Subtopics()
+    this.contents = new Contents()
     this.listContainer = document.getElementById('list')
     this.listContainer.addEventListener('click', this.listClick.bind(this))
     this.modalContainer = document.getElementById('modal-list')
+    this.contentModal = document.getElementById('content-modal')
+    this.modalContainer.addEventListener('click', this.listClick.bind(this))
     this.multiBtn = document.querySelector('.ui.pointing.menu.inverted')
     this.multiBtn.addEventListener('click', this.switchClick.bind(this))
   }
 
-  addModalListeners () {
 
-  }
-
-  switchClick () {
+  switchClick (event) {
     var el = event.target.id
     switch (el) {
       case 'home-index':
@@ -42,12 +42,11 @@ class App {
     .then(() => this.renderSubtopics())
   }
 
-  listClick () {
+  listClick (event) {
     var el = event.target
     while(el.className !== 'ui card') {
       el = el.parentNode
     }
-    // let type = el.id.split('-')[0]
     let id = el.id.split('-')
     id.push(el.getElementsByClassName('header')[0].text)
     switch (id[0]) {
@@ -55,13 +54,19 @@ class App {
         this.topics.getShow(id)
         .then(() => this.renderShowTopic(id))
         break
+      case 'subtopics':
+        this.subtopics.getShow(id)
+        .then( () => this.renderShowSubtopic(id))
+        break
+      case 'contents':
+        this.contents.getShow(id)
+        .then( () => this.renderShowContent(id))
+        $('#content-modal').modal('show')
+        break
     }
+
     $('#modal-list').modal('show')
 
-  }
-
-  renderSubtopics () {
-    this.listContainer.innerHTML = this.subtopics.render()
   }
 
   renderTopics () {
@@ -70,6 +75,17 @@ class App {
 
   renderShowTopic (id) {
     this.modalContainer.innerHTML = this.topics.renderShow(id)
-    console.log(3, this.modalContainer.innerHTML)
+  }
+
+  renderSubtopics () {
+    this.listContainer.innerHTML = this.subtopics.render()
+  }
+
+  renderShowSubtopic (id) {
+    this.modalContainer.innerHTML = this.subtopics.renderShow(id)
+  }
+
+  renderShowContent (id) {
+    this.contentModal.innerHTML = this.contents.renderShow(id)
   }
 }
