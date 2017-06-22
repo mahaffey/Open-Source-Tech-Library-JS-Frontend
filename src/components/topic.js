@@ -1,7 +1,7 @@
 class Topic {
   constructor (data) {
     this.id = data.id
-    this.pic_url = data.pic_url
+    this.pic_url = data.pic_url || "http://i.imgur.com/b0DGRSl.png"
     this.name = data.name
     this.subtopics = data.subtopics
     this.created_at = data.created_at

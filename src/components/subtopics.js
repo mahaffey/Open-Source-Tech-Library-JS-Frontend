@@ -7,7 +7,7 @@ class Subtopics {
 
   getSubtopics () {
     return (this.subtopicAdapter.getIndex().then(
-      data => this.list = data.map(function(subtopic) {return new SubTopic(subtopic)})
+      data => this.list = data.map(function(subtopic) {return new Subtopic(subtopic)})
     ))
   }
 
