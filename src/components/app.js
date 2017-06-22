@@ -10,6 +10,8 @@ class App {
     this.modalContainer.addEventListener('click', this.listClick.bind(this))
     this.multiBtn = document.querySelector('.ui.pointing.menu.inverted')
     this.multiBtn.addEventListener('click', this.switchClick.bind(this))
+
+
   }
 
 
