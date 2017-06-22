@@ -4,6 +4,7 @@ class App {
     this.subtopics = new Subtopics()
     this.listContainer = document.getElementById('list')
     this.listContainer.addEventListener('click', this.listClick.bind(this))
+    this.modalContainer = document.getElementById('modal-list')
     this.multiBtn = document.querySelector('.ui.pointing.menu.inverted')
     this.multiBtn.addEventListener('click', this.switchClick.bind(this))
   }
@@ -46,10 +47,14 @@ class App {
     while(el.className !== 'ui card') {
       el = el.parentNode
     }
-
+    let type = el.id.split('-')[0]
     let id = el.id.split('-')[1]
-    console.log(id)
-    $(`#subtopic-modal-${id}`).modal('show')
+    switch (type) {
+      case 'topic':
+        this.renderShowTopic(id)
+        break
+    }
+    this.modalContainer.modal('show')
   }
 
   renderSubtopics () {
@@ -58,5 +63,9 @@ class App {
 
   renderTopics () {
     this.listContainer.innerHTML = this.topics.render()
+  }
+
+  renderShowTopic (id) {
+    this.modalContainer.innerHTML = this.topics.renderShow(id)
   }
 }
