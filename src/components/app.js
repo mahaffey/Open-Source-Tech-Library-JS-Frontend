@@ -44,11 +44,14 @@ class App {
 
   listClick (event) {
     var el = event.target
-    while(el.className !== 'ui card') {
+    while(el.className !== 'ui card' && el.className !== 'ui positive button') {
       el = el.parentNode
     }
     let id = el.id.split('-')
-    id.push(el.getElementsByClassName('header')[0].text)
+    if (el.getElementsByClassName('header')[0]){
+      id.push(el.getElementsByClassName('header')[0].text)
+    }
+
     switch (id[0]) {
       case 'topics':
         this.topics.getShow(id)
@@ -57,11 +60,18 @@ class App {
       case 'subtopics':
         this.subtopics.getShow(id)
         .then( () => this.renderShowSubtopic(id))
+        .then(function () {
+          $('.ui.black.button').click(function () {$('#modal-list').modal('hide')})
+        })
         break
       case 'contents':
         this.contents.getShow(id)
         .then( () => this.renderShowContent(id))
         $('#content-modal').modal('show')
+        break
+      case 'new':
+        console.log(this)
+        this.renderNewContentForm()
         break
     }
 
@@ -87,5 +97,10 @@ class App {
 
   renderShowContent (id) {
     this.contentModal.innerHTML = this.contents.renderShow(id)
+  }
+
+  renderNewContentForm () {
+    this.contentModal.innerHTML = this.contents.renderForm()
+    $('#content-modal').modal('show')
   }
 }

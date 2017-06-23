@@ -11,8 +11,8 @@ class Content {
     this.subtopic = data.subtopic
     this.created_at = data.created_at
     this.updated_at = data.updated_at
-    console.log(this)
-    debugger
+    //console.log(this)
+    //debugger
   }
 
   render () {
@@ -74,6 +74,31 @@ class Content {
           <i class="checkmark icon"></i>
         </div>
       </div>
+      `)
+  }
+
+  renderForm() {
+    return (`
+      <div class="header">
+        New Content
+      </div>
+      <form class="ui form">
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" name="first-name" placeholder="First Name">
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" name="last-name" placeholder="Last Name">
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" tabindex="0" class="hidden">
+            <label>I agree to the Terms and Conditions</label>
+          </div>
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+      </form>
       `)
   }
 
