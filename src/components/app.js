@@ -44,11 +44,18 @@ class App {
 
   listClick (event) {
     var el = event.target
-    while(el.className !== 'ui card') {
-      el = el.parentNode
+    let id
+    if (!el.id) {
+      while(el.className !== 'ui card') {
+        el = el.parentNode
+      }
+      id = el.id.split('-')
+      id.push(el.getElementsByClassName('header')[0].text)
+    } else {
+      id = el.id.split('-')
+      id.push(el.text.split(' ')[0])
     }
-    let id = el.id.split('-')
-    id.push(el.getElementsByClassName('header')[0].text)
+
     switch (id[0]) {
       case 'topics':
         this.topics.getShow(id)

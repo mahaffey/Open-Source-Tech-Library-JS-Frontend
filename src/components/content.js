@@ -3,8 +3,9 @@ class Content {
   constructor (data) {
     this.id = data.id
     this.title = data.title
+    this.author = data.author || "Anonymous"
     this.pic_url = data.pic_url || "http://i.imgur.com/b0DGRSl.png"
-    this.link_url = data.link_url
+    this.link_url = data.link_url || `https://www.google.com/#q=${this.title.split(' ').join('+')}`
     this.description = data.description || ""
     this.descript = data.description || ""
     this.difficulty = data.difficulty
@@ -59,18 +60,20 @@ class Content {
           <img src="${this.pic_url}">
         </div>
         <div class="description">
-          <div class="ui header">Learning Material</div>
+          <div class="ui header">
+            Created by ${this.author} - <a href="${this.link_url}" target="_blank"><span style="color: #21ba45;">${this.title}</span></a>
+          </div>
           <p>${this.description}</p>
         </div>
       </div>
       <div class="actions">
         <div class="ui black deny button">
-          Nope
+          Get me outta here
         </div>
-        <div class="ui positive right labeled icon button">
-          Yep, that's me
-          <i class="checkmark icon"></i>
-        </div>
+
+          <a class="ui positive right labeled icon button" href="${this.link_url}" target="_blank">Take me to ${this.title}<i class="checkmark icon"></i></a>
+
+
       </div>
       `)
   }
