@@ -56,4 +56,8 @@ class Contents {
     </form>
       `)
   }
+
+  postNew(content) {
+    this.contentAdapter.createContent(content).then(r => console.log(r)).then($('#content-modal').modal('hide'))
+  }
 }

@@ -10,6 +10,7 @@ class App {
     this.modalContainer.addEventListener('click', this.listClick.bind(this))
     this.multiBtn = document.querySelector('.ui.pointing.menu.inverted')
     this.multiBtn.addEventListener('click', this.switchClick.bind(this))
+    this.subtopic_id = 0
   }
 
 
@@ -63,6 +64,7 @@ class App {
         .then(function () {
           $('.ui.black.button').click(function () {$('#modal-list').modal('hide')})
         })
+        this.subtopic_id = id[1]
         break
       case 'contents':
         this.contents.getShow(id)
@@ -104,5 +106,21 @@ class App {
     $('#content-modal').modal('show')
     $('.ui.dropdown').dropdown()
     $('form').submit(this.submitContent.bind(this))
+  }
+
+  submitContent() {
+    event.preventDefault()
+    let new_content = {
+      content: {
+        title: $('form input.title').val(),
+        pic_url: $('form input.pic_url').val(),
+        link_url: $('form input.link_url').val(),
+        description: $('form input.description').val(),
+        difficulty:  $('.ui.dropdown').select().first()[0].innerText,
+        subtopic_id: this.subtopic_id
+      }
+    }
+    //console.log(new_content)
+    this.contents.postNew(new_content)
   }
 }
