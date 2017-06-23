@@ -1,6 +1,6 @@
 class SubtopicAdapter {
   constructor() {
-    this.baseURL = 'http://localhost:3000/api/v1/subtopics'
+    this.baseURL = `${location.href.split(':').slice(0,-1).join(':') + ':3000'}/api/v1/subtopics`
   }
 
   getIndex(){

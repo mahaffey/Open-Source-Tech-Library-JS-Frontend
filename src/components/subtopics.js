@@ -22,10 +22,29 @@ class Subtopics {
   }
 
   renderShow (id) {
-    return `<div class="header">${(id[2])}</div><div class="ui link cards">` + this.renderShowSubtopics() + "</div>"
+    return (`
+      <div class="header">
+        ${(id[2])}
+        <div class="item right aligned">
+          <div class="ui labeled icon buttons">
+            <button class="ui black button">
+              <i class="remove circle icon"></i>
+              Go Back
+              </button>
+            <button class="ui positive button" id="new-form">
+              <i class="add circle icon"></i>
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="ui link cards">
+        ${this.renderShowSubtopics()}
+      </div>`)
   }
 
   renderShowSubtopics() {
+
     return this.list.map(content => content.render()).join('')
   }
 
