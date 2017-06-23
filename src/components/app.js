@@ -102,5 +102,7 @@ class App {
   renderNewContentForm () {
     this.contentModal.innerHTML = this.contents.renderForm()
     $('#content-modal').modal('show')
+    $('.ui.dropdown').dropdown()
+    $('form').submit(this.submitContent.bind(this))
   }
 }
