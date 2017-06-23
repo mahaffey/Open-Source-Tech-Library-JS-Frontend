@@ -30,7 +30,7 @@ class App {
   }
 
   refreshHome () {
-    this.listContainer.innerHTML = '<img src="http://i.imgur.com/P9IVqkS.jpg">'
+    this.listContainer.innerHTML = '<img style="width:500px;height:500px;" src="http://i.imgur.com/P9IVqkS.jpg">'
   }
 
   topicClick () {
