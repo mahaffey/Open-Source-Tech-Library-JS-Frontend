@@ -81,8 +81,6 @@ class App {
         break
     }
     setTimeout(()=>{$('#modal-list').modal('show')}, 50)
-
-
   }
 
   renderTopics () {
